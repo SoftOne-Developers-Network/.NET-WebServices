@@ -102,22 +102,6 @@ namespace example2
         }
 
 
-        private string execSql(string sqlCommand)
-        {
-            string authStr = "\"service\": \"getSqlData\",\"clientID\": \"{0}\", \"SQL\": \"{1}\", \"appid\":\"157\"";
-            string rs = executeRequest("{" + string.Format(authStr, clientID, sqlCommand) + "}");
-
-            Newtonsoft.Json.Linq.JObject jo = Newtonsoft.Json.Linq.JObject.Parse(rs);
-            Boolean success = Convert.ToBoolean(jo["success"].ToString());
-            if (success)
-            {
-                return jo["rows"].ToString();
-            }
-            else
-            {
-                return "";
-            }
-        }
 
         private string postNewSalDoc(string seriesId, string trdrId, string itemId)
         {
